@@ -1,13 +1,19 @@
 Rails.application.routes.draw do
   get 'posts/index' => 'posts#index'
-  get 'posts/new' => 'posts#new'
-  post 'posts/create' => 'posts#create'
+  get 'posts/:send_id/new' => 'posts#new'
+  post 'posts/:send_id/create' => 'posts#create'
   get 'posts/:id/edit' => 'posts#edit'
   post 'posts/:id/update' => "posts#update"
   post 'posts/:id/destroy' => 'posts#destroy'
   get 'posts/:id' => 'posts#show'
 
   get 'users/index' => 'users#index'
+  get 'users/ranking/send' => 'users#send_ranking'
+  get 'users/ranking/send/month' => 'users#send_ranking_month'
+  get 'users/ranking/send/year' => 'users#send_ranking_year'
+  get 'users/ranking/receive' => 'users#receive_ranking'
+  get 'users/ranking/receive/month' => 'users#receive_ranking_month'
+  get 'users/ranking/receive/year' => 'users#receive_ranking_year'
   get 'signup' => 'users#new'
   get 'login' => 'users#login_form'
   post 'login' => 'users#login'

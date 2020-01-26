@@ -6,25 +6,21 @@
             <p><%= @user.email %></p>
             <% if @current_user.id == @user.id %>
                 <%= link_to("編集", "/users/#{@user.id}/edit") %>
+            <% else %>
+                <%= link_to("/posts/#{@user.id}/new") do %>
+                    <input class="btn" type="submit" value="いいね！メッセージを送る">
+                <% end %>
             <% end %>
         </div>
     </div>
     <div class="container">
         <ul class="user-tabs">
-            <li class="active"><%= link_to("投稿", "/users/#{@user.id}") %></li>
-            <li><%= link_to("いいね!", "/users/#{@user.id}/likes") %></li>
+            <li class="active"><%= link_to("みんなからのいいね！メッセージ", "/users/#{@user.id}") %></li>
+            <li><%= link_to("いいね!グラフ（未実装）", "/users/#{@user.id}") %></li>
         </ul>
         <% @posts.each do |post| %>
             <div class="posts-index-item">
-                <div class="post-left">
-                    <img src="<%= "/user_images/#{post.user.image_name}" %>">
-                </div>
-                <div class="post-right">
-                    <div class="post-user-name">
-                        <%= link_to("#{post.user.name}", "/users/#{post.user.id}") %>
-                    </div>
-                    <%= link_to(post.content, "/posts/#{post.id}") %>
-                </div>
+                <%= link_to(post.content, "/posts/#{post.id}") %>
             </div>
         <% end %>
     </div>

@@ -84,7 +84,6 @@
 }
 
 .user-tabs {
-    margin-top: 40px;
     background-color: white;
     overflow: hidden;
     box-shadow: 0 2px 6px #c1ced7;
@@ -105,6 +104,30 @@
 .user-tabs a {
     display: inline-block;
     padding: 16px 30px;
+    color: #afb6bf;
+}
+
+.sub-tabs {
+    background-color: white;
+    overflow: hidden;
+    box-shadow: 0 2px 6px #c1ced7;
+}
+
+.sub-tabs li {
+    float: left;
+}
+
+.sub-tabs li.active {
+    border-bottom: 2px solid rgba(255, 177, 0, 1);
+}
+
+.sub-tabs li.active a {
+    color: #57575f;
+}
+
+.sub-tabs a {
+    display: inline-block;
+    padding: 8px 15px;
     color: #afb6bf;
 }
 

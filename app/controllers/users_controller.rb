@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 
     def show
         @user = User.find_by(id: params[:id])
-        @posts = Post.where(user_id: @user.id).order(created_at: "DESC")
+        @posts = Post.where(send_id: @user.id).order(created_at: "DESC")
     end
 
     def new
@@ -60,7 +60,7 @@ class UsersController < ApplicationController
         if user && user.authenticate(params[:password])
             session[:user_id] = user.id
             flash[:notice] = "ログインしました"
-            redirect_to("/posts/index")
+            redirect_to("/users/index")
         else
             @error_message = "ニックネームまたはパスワードが違います"
             @name = params[:name]
@@ -78,5 +78,43 @@ class UsersController < ApplicationController
     def likes
         @user = User.find_by(id: params[:id])
         @likes = Like.where(user_id: @user.id)
+    end
+
+    def send_ranking
+        @users = User.find(Post.group(:user_id).order('count(user_id) desc').pluck(:user_id))
+        @posts = Post.all
+    end
+
+    def send_ranking_month
+        from  = Time.now.at_beginning_of_day
+        to    = (from + 1.month)
+        @posts = Post.where(created_at: from...to)
+        @users = User.find(@posts.group(:user_id).order('count(user_id) desc').pluck(:user_id))
+    end
+
+    def send_ranking_year
+        from  = Time.now.at_beginning_of_day
+        to    = (from + 1.year)
+        @posts = Post.where(created_at: from...to)
+        @users = User.find(@posts.group(:user_id).order('count(user_id) desc').pluck(:user_id))
+    end
+
+    def receive_ranking
+        @users = User.find(Post.group(:send_id).order('count(send_id) desc').pluck(:send_id))
+        @posts = Post.all
+    end
+
+    def receive_ranking_month
+        from  = Time.now.at_beginning_of_day
+        to    = (from + 1.month)
+        @posts = Post.where(created_at: from...to)
+        @users = User.find(@posts.group(:send_id).order('count(send_id) desc').pluck(:send_id))
+    end
+
+    def receive_ranking_year
+        from  = Time.now.at_beginning_of_day
+        to    = (from + 1.year)
+        @posts = Post.where(created_at: from...to)
+        @users = User.find(@posts.group(:send_id).order('count(send_id) desc').pluck(:send_id))
     end
 end

@@ -1,0 +1,29 @@
+<div class="main users-index">
+    <div class="container">
+        <h1 class="users-heading">ランキング</h1>
+        <ul class="user-tabs">
+            <li class="active"><%= link_to("いいね！投稿数", "/users/ranking/send/month") %></li>
+            <li><%= link_to("いいね！獲得数", "/users/ranking/receive/month") %></li>
+        </ul>
+        <ul class="sub-tabs">
+            <li><%= link_to("月間", "/users/ranking/send/month") %></li>
+            <li class="active"><%= link_to("年間", "/users/ranking/send/year") %></li>
+            <li><%= link_to("トータル", "/users/ranking/send") %></li>
+        </ul>
+        <% @users.each do |user| %>
+            <div class="users-index-item">
+                <div class="user-left">
+                    <img src=<%= "/user_images/#{user.image_name}" %>>
+                </div>
+                <div class="user-right">
+                    <div class="user-name">
+                        <%= link_to(user.name, "/users/#{user.id}") %>
+                    </div>
+                    <div class="points">
+                        <%= @posts.where(user_id: user.id).count %>いいね！
+                    </div>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>

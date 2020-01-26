@@ -3,13 +3,20 @@
         <h1 class="form-heading">投稿する</h1>
         <div class="form">
             <div class="form-body">
-                <%= form_tag("/posts/create") do %>
+                <%= form_tag("/posts/#{@post.send_id}/create") do %>
                     <% @post.errors.full_messages.each do |message| %>
                         <div class="form-error">
                             <%= message %>
                         </div>
                     <% end %>
+                    <div class="form-start-msg">
+                        <img class="user_icon" src=<%= "/user_images/#{@user.image_name}" %>>
+                        <p><%= @user.name %>さんの</p>
+                    </div>
                     <textarea name="content"><%= @post.content %></textarea>
+                    <div class="form-end-msg">
+                        <p>ところがいいね！</p>
+                    </div>
                     <input type="submit" value="投稿">
                 <% end %>
             </div>

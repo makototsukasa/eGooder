@@ -15,14 +15,14 @@ class ApplicationController < ActionController::Base
     def check_login
         if session[:user_id]
             flash[:notice] = "すでにログインしています"
-            redirect_to("/posts/index")
+            redirect_to("/users/index")
         end
     end
 
     def check_account
         if @current_user.id != params[:id].to_i
             flash[:notice] = "権限がありません"
-            redirect_to("/posts/index")
+            redirect_to("/users/index")
         end
     end
 end

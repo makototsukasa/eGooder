@@ -15,17 +15,23 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post = Post.new()
+    @post = Post.new(
+      user_id: @current_user.id,
+      send_id: params[:send_id]
+    )
+    @user = User.find_by(id: @post.send_id)
   end
 
   def create
     @post = Post.new(
         content: params[:content],
-        user_id: @current_user.id
+        user_id: @current_user.id,
+        send_id: params[:send_id]
       )
+    @user = User.find_by(id: @post.send_id)
     if @post.save
       flash[:notice] = "投稿を作成しました"
-      redirect_to("/posts/index")
+      redirect_to("/users/#{@post.send_id}")
     else
       render("/posts/new")
     end
