@@ -86,15 +86,15 @@ class UsersController < ApplicationController
     end
 
     def send_ranking_month
-        from  = Time.now.at_beginning_of_day
-        to    = (from + 1.month)
+        to = Time.now
+        from = (to - 1.month)
         @posts = Post.where(created_at: from...to)
         @users = User.find(@posts.group(:user_id).order('count(user_id) desc').pluck(:user_id))
     end
 
     def send_ranking_year
-        from  = Time.now.at_beginning_of_day
-        to    = (from + 1.year)
+        to = Time.now
+        from = (to - 1.year)
         @posts = Post.where(created_at: from...to)
         @users = User.find(@posts.group(:user_id).order('count(user_id) desc').pluck(:user_id))
     end
@@ -105,15 +105,15 @@ class UsersController < ApplicationController
     end
 
     def receive_ranking_month
-        from  = Time.now.at_beginning_of_day
-        to    = (from + 1.month)
+        to = Time.now
+        from = (to - 1.month)
         @posts = Post.where(created_at: from...to)
         @users = User.find(@posts.group(:send_id).order('count(send_id) desc').pluck(:send_id))
     end
 
     def receive_ranking_year
-        from  = Time.now.at_beginning_of_day
-        to    = (from + 1.year)
+        to = Time.now
+        from = (to - 1.year)
         @posts = Post.where(created_at: from...to)
         @users = User.find(@posts.group(:send_id).order('count(send_id) desc').pluck(:send_id))
     end
