@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   get 'users/:id/edit' => 'users#edit'
   post 'users/:id/update' => 'users#update'
   get 'users/:id/likes' => 'users#likes'
+  post 'users/:id/destroy' => 'users#destroy'
   get 'users/:id' => 'users#show'
 
   post 'likes/:post_id/create' => 'likes#create'

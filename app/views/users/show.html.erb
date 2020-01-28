@@ -6,6 +6,7 @@
             <p><%= @user.email %></p>
             <% if @current_user.id == @user.id %>
                 <%= link_to("編集", "/users/#{@user.id}/edit") %>
+                <%= link_to("削除", "/users/#{@user.id}/destroy", {method: "post"}) %>
             <% else %>
                 <%= link_to("/posts/#{@user.id}/new") do %>
                     <input class="btn" type="submit" value="いいね！メッセージを送る">

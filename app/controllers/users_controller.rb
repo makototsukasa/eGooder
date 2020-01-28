@@ -80,6 +80,20 @@ class UsersController < ApplicationController
         @likes = Like.where(user_id: @user.id)
     end
 
+    def destroy
+        @user = User.find_by(id: params[:id])
+        @posts = Post.where(user_id: params[:id]).or(Post.where(send_id: params[:id]))
+        @likes = Like.where(user_id: params[:id])
+        @user.destroy
+        @posts.each do |post|
+            post.destroy
+        end
+        @likes.each do |like|
+            like.destroy
+        end
+        redirect_to("/login")
+    end
+
     def send_ranking
         @users = User.find(Post.group(:user_id).order('count(user_id) desc').pluck(:user_id))
         @posts = Post.all
