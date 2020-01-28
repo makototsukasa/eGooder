@@ -13,7 +13,7 @@
         <% @users.each do |user| %>
             <div class="users-index-item">
                 <div class="user-left">
-                    <img src=<%= "/user_images/#{user.image_name}" %>>
+                    <img src=<%= "/user_images/#{user.image_name}" %> onerror="this.src='/user_images/default_icon.jpg'"/>
                 </div>
                 <div class="user-right">
                     <div class="user-name">
