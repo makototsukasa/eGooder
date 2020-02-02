@@ -1,5 +1,10 @@
 <div class="main user-show">
     <div class="container">
+        <div class"back-container">
+            <div class="back-btn">
+                <%= link_to("戻る", "/users/index") %>
+            </div>
+        </div>
         <div class="user">
             <img src=<%= "/user_images/#{@user.image_name}" %> onerror="this.src='/user_images/default_icon.jpg'"/>
             <h2><%= @user.name %></h2>
@@ -12,15 +17,13 @@
                 <% end %>
             <% end %>
         </div>
-    </div>
-    <div class="container">
         <ul class="user-tabs">
             <li class="active"><%= link_to("みんなからのいいね！メッセージ", "/users/#{@user.id}") %></li>
             <li><%= link_to("いいね!グラフ（未実装）", "/users/#{@user.id}") %></li>
         </ul>
         <% @posts.each do |post| %>
             <div class="posts-index-item">
-                <%= link_to(post.content, "/posts/#{post.id}") %>
+                <%= post.content %>
             </div>
         <% end %>
     </div>

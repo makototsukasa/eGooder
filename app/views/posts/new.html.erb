@@ -1,5 +1,8 @@
 <div class="main posts-new">
     <div class="container">
+            <div class="back-btn">
+                <%= link_to("戻る", "/users/#{@user.id}") %>
+            </div>
         <h1 class="form-heading">投稿する</h1>
         <div class="form">
             <div class="form-body">
@@ -10,7 +13,7 @@
                         </div>
                     <% end %>
                     <div class="form-start-msg">
-                        <img class="user_icon" src=<%= "/user_images/#{@user.image_name}" %>>
+                        <img class="icon post-icon" src=<%= "/user_images/#{@user.image_name}" %>>
                         <p><%= @user.name %>さんの</p>
                     </div>
                     <textarea name="content"><%= @post.content %></textarea>

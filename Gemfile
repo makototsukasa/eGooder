@@ -68,3 +68,6 @@ gem 'bcrypt'
 group :production do
   gem 'pg', '0.18.4'
 end
+
+# jQueryを使うために追加
+gem "jquery-rails"
