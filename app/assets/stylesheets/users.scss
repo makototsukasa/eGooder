@@ -3,6 +3,12 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 /* users/index ============= */
+.users-index {
+    position: relative;
+    color: white;
+    padding: 5em 10em;
+}
+
 .users-heading {
     font-weight: 300;
     margin: 60px 0 20px;
@@ -10,42 +16,57 @@
     color: rgba(255, 117, 0, 1);
 }
 
-.users-index-item {
-    padding: 20px 30px;
+.user-object {
+    position: relative;
+    display: inline-block;
+    text-align: center;
+    width: 10em;
+    height: 10em;
+    margin-bottom: 5em;
+    margin-right: 2em;
+    vertical-align: top;
+}
+
+.user-object-name {
     background-color: white;
-    overflow: hidden;
-    box-shadow: 0 2px 6px #c1ced7;
-    object-fit: cover;
 }
 
-.user-left {
-    float:left;
-    width:10%;
+.user-object-icon {
+    width: 50%;
+    height: 50%;
+    background-color: white;
+    border: solid 0.2em rgba(226, 117, 0, 1);
+    cursor: pointer;
 }
 
-.user-left img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    box-shadow: 0 2px 6px #c1ced7;
-    object-fit: cover;
+.user-object-item {
+    position: absolute;
+    width: 10em;
+    height: 5em;
+    top: -5em;
+    left: -6em;
+    color: rgba(75, 75, 75, 1);
+    display: none;
 }
 
-.user-right {
-    width: 90%;
-    height: 50px;
-    padding-left: 25px;
-    text-align: left;
-    display: table-cell;
-    vertical-align: middle;
+.user-object-item-nw {
+    top: -5em;
+    left: -7em;
 }
 
-.user-name a {
-    font-weight: 600;
+.user-object-item-ne {
+    top: -5em;
+    left: 7em;
 }
 
-.user-name a:hover {
-    color: rgba(255, 117, 0, 1);
+.user-object-item-sw {
+    top: 10em;
+    left: -7em;
+}
+
+.user-object-item-se {
+    top: 10em;
+    left: 7em;
 }
 
 /* user/show =============== */
@@ -55,6 +76,7 @@
 
 .user {
     margin-bottom: 20px;
+    padding: 0 1em 1em 1em;
 }
 
 .user img {
@@ -134,4 +156,38 @@
 /* user/new, users/edit ========== */
 .users-form input {
     margin-bottom: 15px;
+}
+
+/* users/ranking */
+.users-index-item {
+    padding: 20px 30px;
+    background-color: white;
+    overflow: hidden;
+    box-shadow: 0 2px 6px #c1ced7;
+    object-fit: cover;
+}
+.user-left {
+    float: left;
+    width: 10%;
+}
+
+.user-left img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    box-shadow: 0 2px 6px #c1ced7;
+    object-fit: cover;
+}
+
+.user-right {
+    width: 90%;
+    height: 50px;
+    padding-left: 25px;
+    text-align: left;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.points {
+    color: black;
 }

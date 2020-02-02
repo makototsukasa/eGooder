@@ -47,15 +47,13 @@ body {
 
 .main {
     position: absolute;
-    top: 64px;
     width: 100%;
-    height: auto;
-    min-height: 100%;
+    padding: 1.5em 1.5em;
 }
 
 .container {
     max-width: 600px;
-    margin: 60px auto;
+    margin: 50px auto;
     padding-left: 15px;
     padding-right: 15px;
     clear: both;
@@ -72,13 +70,95 @@ body {
     border-radius: 10px;
 }
 
-.user_icon {
-    width: 50px;
-    height: 50px;
+.icon {
     border-radius: 50%;
-    box-shadow: 0 2px 6px #c1ced7;
     object-fit: cover;
 }
+
+.speech-bubble {
+    position: relative;
+    display: inline-block;
+    padding: 0.5em 1em;
+    min-width: 120px;
+    max-width: 100%;
+    font-size: 16px;
+    background: white;
+    border-radius: 1em;
+    box-shadow: 0 2px 2px rgba(226, 117, 0, 0.5);
+  }
+
+  .speech-bubble-nw::before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 100%;
+    margin-top: -20px;
+    margin-left: -30px;
+    border-top: 15px solid transparent;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 15px solid white;
+    transform: rotate(45deg);
+  }
+
+  .speech-bubble-ne::before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: -20px;
+    margin-left: 0px;
+    border-top: 15px solid transparent;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 15px solid white;
+    transform: rotate(-45deg);
+  }
+  .speech-bubble-sw::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 100%;
+    margin-top: -15px;
+    margin-left: -30px;
+    border-top: 15px solid white;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    transform: rotate(-45deg);
+  }
+  .speech-bubble-se::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin-top: -15px;
+    margin-left: 0px;
+    border-top: 15px solid white;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 15px solid transparent;
+    transform: rotate(45deg);
+  }
+
+  .back-container {
+    position: relative;
+    display: block;  
+    width: 100%;
+  }
+
+  .back-btn {
+      margin-top: 6em;
+      text-align: center;
+      margin-right: 30em;
+      background-color: rgba(226, 117, 0, 1);
+      border-radius: 2em;
+      padding: 0.5em;
+  }
+
+  .back-btn a {
+    color: white;
+  }
 
 /* ヘッダー ========================== */
 header {
@@ -201,7 +281,7 @@ header {
 
 .form-heading {
     font-weight: 300;
-    margin: 60px 0 20px;
+    margin: 0.2em 0;
     font-size: 48px;
     color: rgba(255, 117, 0, 1);
 }

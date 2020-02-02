@@ -94,6 +94,15 @@
     opacity: 0.5;
 }
 
+.post-icon {
+    width: 3em;
+    height: 3em;
+    background-color: white;
+    box-shadow: 0 2px 6px #c1ced7;
+    margin: 20px 0 10px;
+    object-fit: cover;
+}
+
 /* font awesome */
 .like-btn {
     color: #ff2581;

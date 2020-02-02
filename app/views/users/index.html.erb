@@ -1,17 +1,8 @@
-<div class="main users-index">
-    <div class="container">
-        <h1 class="users-heading">メンバー</h1>
+<div class="main">
+<h1 class="users-heading heading">メンバー</h1>
+    <div class="users-index">
         <% @users.each do |user| %>
-            <div class="users-index-item">
-                <div class="user-left">
-                    <img src=<%= "/user_images/#{user.image_name}" %> onerror="this.src='/user_images/default_icon.jpg'"/>
-                </div>
-                <div class="user-right">
-                    <div class="user-name">
-                        <%= link_to(user.name, "/users/#{user.id}") %>
-                    </div>
-                </div>
-            </div>
+            <%= render partial: "userObject", locals: { user: user, posts: @posts.where(send_id: user.id) } %>
         <% end %>
     </div>
 </div>
