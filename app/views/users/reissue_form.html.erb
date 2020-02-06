@@ -1,6 +1,6 @@
 <div class="main users-new">
     <div class="container">
-        <h1 class="form-heading">ログイン</h1>
+        <h1 class="form-heading">パスワード再発行</h1>
         <div class="form user-form">
             <div class="form-body">
                 <% if @error_message %>
@@ -8,16 +8,13 @@
                         <%= @error_message %>
                     </div>
                 <% end %>
-                <%= form_tag("/login") do %>
+                <%= form_tag("/reissue") do %>
                     <p>ニックネーム</p>
                     <input name="name" value=<%= @name %>>
-                    <p>パスワード</p>
+                    <p>新しいパスワード</p>
                     <input name="password" type="password" value=<%= @password %>>
-                    <input type="submit" value="ログイン">
+                    <input type="submit" value="再発行＆ログイン">
                 <% end %>
-                <div class="form_reissue">
-                    <%= link_to("パスワード再発行", "/reissue") %>
-                </div>
             </div>
         </div>
     </div>

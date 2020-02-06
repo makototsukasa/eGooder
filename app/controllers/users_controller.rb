@@ -76,6 +76,21 @@ class UsersController < ApplicationController
         redirect_to("/login")
     end
 
+    def reissue_form
+    end
+
+    def reissue
+        @user = User.find_by(name: params[:name])
+        @user.password = params[:password]
+        if @user.save
+            session[:user_id] = @user.id
+            flash[:notice] = "パスワードを更新しました"
+            redirect_to("/users/index")
+        else
+            redirect_to("/reissue_form")
+        end
+    end
+
     def likes
         @user = User.find_by(id: params[:id])
         @likes = Like.where(user_id: @user.id)

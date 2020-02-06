@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   get 'login' => 'users#login_form'
   post 'login' => 'users#login'
   post 'logout' => 'users#logout'
+  get 'reissue' => 'users#reissue_form'
+  post 'reissue' => 'users#reissue'
   post 'users/create' => 'users#create'
   get 'users/:id/edit' => 'users#edit'
   post 'users/:id/update' => 'users#update'
