@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
     before_action :check_not_login, {only: [:index, :show, :edit, :update]}
-    before_action :check_login, {only: [:new, :create, :login_form, :login]}
+    before_action :check_login, {only: [:new, :create, :loginform, :login]}
     before_action :check_account, {only: [:edit, :update]}
 
     def index
@@ -53,7 +53,7 @@ class UsersController < ApplicationController
         end
     end
 
-    def login_form
+    def loginform
     end
 
     def login
@@ -66,7 +66,7 @@ class UsersController < ApplicationController
             @error_message = "ニックネームまたはパスワードが違います"
             @name = params[:name]
             @password = params[:password]
-            render("/users/login_form")
+            render("/users/loginform")
         end
     end
 
@@ -76,7 +76,7 @@ class UsersController < ApplicationController
         redirect_to("/login")
     end
 
-    def reissue_form
+    def reissueform
     end
 
     def reissue
@@ -110,41 +110,51 @@ class UsersController < ApplicationController
         redirect_to("/login")
     end
 
-    def send_ranking
-        @users = User.find(Post.group(:user_id).order('count(user_id) desc').pluck(:user_id))
-        @posts = Post.all
-    end
-
-    def send_ranking_month
-        to = Time.now
-        from = (to - 1.month)
-        @posts = Post.where(created_at: from...to)
-        @users = User.find(@posts.group(:user_id).order('count(user_id) desc').pluck(:user_id))
-    end
-
-    def send_ranking_year
-        to = Time.now
-        from = (to - 1.year)
-        @posts = Post.where(created_at: from...to)
-        @users = User.find(@posts.group(:user_id).order('count(user_id) desc').pluck(:user_id))
-    end
-
-    def receive_ranking
-        @users = User.find(Post.group(:send_id).order('count(send_id) desc').pluck(:send_id))
-        @posts = Post.all
-    end
-
-    def receive_ranking_month
-        to = Time.now
-        from = (to - 1.month)
-        @posts = Post.where(created_at: from...to)
-        @users = User.find(@posts.group(:send_id).order('count(send_id) desc').pluck(:send_id))
-    end
-
-    def receive_ranking_year
-        to = Time.now
-        from = (to - 1.year)
-        @posts = Post.where(created_at: from...to)
-        @users = User.find(@posts.group(:send_id).order('count(send_id) desc').pluck(:send_id))
+    def ranking
+        @type = params[:type]
+        @period = params[:period]
+        if @type=="receive"
+            case @period
+            when "week" then
+                to = Time.now
+                from = (to - 1.week)
+                @posts = Post.where(created_at: from...to)
+                @users = User.find(@posts.group(:send_id).order('count(send_id) desc').pluck(:send_id))
+            when "month" then
+                to = Time.now
+                from = (to - 1.month)
+                @posts = Post.where(created_at: from...to)
+                @users = User.find(@posts.group(:send_id).order('count(send_id) desc').pluck(:send_id))
+            when "year" then
+                to = Time.now
+                from = (to - 1.year)
+                @posts = Post.where(created_at: from...to)
+                @users = User.find(@posts.group(:send_id).order('count(send_id) desc').pluck(:send_id))
+            else
+                @users = User.find(Post.group(:send_id).order('count(send_id) desc').pluck(:send_id))
+                @posts = Post.all
+            end
+        else
+            case @period
+            when "week" then
+                to = Time.now
+                from = (to - 1.week)
+                @posts = Post.where(created_at: from...to)
+                @users = User.find(@posts.group(:user_id).order('count(user_id) desc').pluck(:user_id))
+            when "month" then
+                to = Time.now
+                from = (to - 1.month)
+                @posts = Post.where(created_at: from...to)
+                @users = User.find(@posts.group(:user_id).order('count(user_id) desc').pluck(:user_id))
+            when "year" then
+                to = Time.now
+                from = (to - 1.year)
+                @posts = Post.where(created_at: from...to)
+                @users = User.find(@posts.group(:user_id).order('count(user_id) desc').pluck(:user_id))
+            else
+                @users = User.find(Post.group(:user_id).order('count(user_id) desc').pluck(:user_id))
+                @posts = Post.all
+            end
+        end
     end
 end

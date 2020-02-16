@@ -1,0 +1,39 @@
+/* 共通スキン */
+/* フォントサイズ ===============================*/
+.font-large {
+    font-size: 1.2em;
+}
+
+.font-small {
+    font-size: 0.8em;
+}
+
+/* フォントカラー ===============================*/
+.font-white {
+    color: white;
+}
+
+.font-orange {
+    color: rgba(255, 117, 0, 1);
+}
+
+.font-gray {
+    color: rgba(100, 100, 100, 1);
+}
+
+/* 背景色 ===============================*/
+.bg-white {
+    background-color: rgba(255, 255, 255, 1);   
+}
+
+.bg-orange {
+    background-color: rgba(226, 117, 0, 1);
+}
+
+.bg-lightorange {
+    background-color: rgba(255, 240, 230, 1);
+}
+
+.shadow-gray {
+    box-shadow: 0.1em 0.1em 1em rgba(0, 0, 0, 0.1);
+}

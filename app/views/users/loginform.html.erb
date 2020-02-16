@@ -1,12 +1,12 @@
 <div class="main bg-lightorange">
-    <h1 class="heading font-orange">新規登録</h1>
+    <h1 class="heading font-orange">ログイン</h1>
     <div class="main-content bg-white shadow-gray">
         <% if @error_message %>
             <div class="form-error">
                 <%= @error_message %>
             </div>
         <% end %>
-        <%= form_tag("/users/create") do %>
+        <%= form_tag("/login") do %>
             <div class="form-item">
                 <p>ニックネーム</p>
                 <input name="name" value=<%= @name %>>
@@ -16,8 +16,11 @@
                 <input name="password" type="password" value=<%= @password %>>
             </div>
             <div class="form-submit">
-                <input class="bg-orange font-white" type="submit" value="アカウント作成">
+                <input class="bg-orange font-white" type="submit" value="ログイン">
             </div>
         <% end %>
+        <div class="form_reissue font-small">
+            <%= link_to("パスワード再発行", "/reissue") %>
+        </div>
     </div>
 </div>

@@ -12,11 +12,11 @@
 
   <body>
     <!-- 共通ヘッダー -->
-    <header>
-      <div class="header-logo">
+    <header class="bg-orange">
+      <div class="header-logo-container">
         <%= link_to("eとこみつけたー", "/") %>
       </div>
-      <ul class="header-menus">
+      <ul class="header-menu-container">
         <% if session[:user_id] %>
           <li>
             <%= link_to("#{@current_user.name}さん", "/users/#{@current_user.id}") %>

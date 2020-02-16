@@ -3,20 +3,12 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 /* users/index ============= */
-.users-index {
+.users-container {
     position: relative;
-    color: white;
     padding: 5em 10em;
 }
 
-.users-heading {
-    font-weight: 300;
-    margin: 60px 0 20px;
-    font-size: 48px;
-    color: rgba(255, 117, 0, 1);
-}
-
-.user-object {
+.user-item {
     position: relative;
     display: inline-block;
     text-align: center;
@@ -27,11 +19,11 @@
     vertical-align: top;
 }
 
-.user-object-name {
+.user-item-name {
     background-color: white;
 }
 
-.user-object-icon {
+.user-item-icon {
     width: 50%;
     height: 50%;
     background-color: white;
@@ -39,7 +31,7 @@
     cursor: pointer;
 }
 
-.user-object-item {
+.user-item-message {
     position: absolute;
     width: 10em;
     height: 5em;
@@ -49,145 +41,22 @@
     display: none;
 }
 
-.user-object-item-nw {
+.user-item-message-nw {
     top: -5em;
     left: -7em;
 }
 
-.user-object-item-ne {
+.user-item-message-ne {
     top: -5em;
     left: 7em;
 }
 
-.user-object-item-sw {
+.user-item-message-sw {
     top: 10em;
     left: -7em;
 }
 
-.user-object-item-se {
+.user-item-message-se {
     top: 10em;
     left: 7em;
-}
-
-/* user/show =============== */
-.user-show {
-    text-align: center;
-}
-
-.user {
-    margin-bottom: 20px;
-    padding: 0 1em 1em 1em;
-}
-
-.user img {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    box-shadow: 0 2px 6px #c1ced7;
-    margin: 20px 0 10px;
-    object-fit: cover;
-}
-
-.user h2 {
-    font-size: 20px;
-    font-weight: 600;
-    line-height: 1.2;
-}
-
-.user p {
-    font-size: 13px;
-    margin-bottom: 15px;
-}
-
-.user a {
-    color: #8899a6;
-    text-decoration: underline;
-    font-weight: 200;
-}
-
-.user-tabs {
-    background-color: white;
-    overflow: hidden;
-    box-shadow: 0 2px 6px #c1ced7;
-}
-
-.user-tabs li {
-    float: left;
-}
-
-.user-tabs li.active {
-    border-bottom: 2px solid rgba(255, 177, 0, 1);
-}
-
-.user-tabs li.active a {
-    color: #57575f;
-}
-
-.user-tabs a {
-    display: inline-block;
-    padding: 16px 30px;
-    color: #afb6bf;
-}
-
-.sub-tabs {
-    background-color: white;
-    overflow: hidden;
-    box-shadow: 0 2px 6px #c1ced7;
-}
-
-.sub-tabs li {
-    float: left;
-}
-
-.sub-tabs li.active {
-    border-bottom: 2px solid rgba(255, 177, 0, 1);
-}
-
-.sub-tabs li.active a {
-    color: #57575f;
-}
-
-.sub-tabs a {
-    display: inline-block;
-    padding: 8px 15px;
-    color: #afb6bf;
-}
-
-/* user/new, users/edit ========== */
-.users-form input {
-    margin-bottom: 15px;
-}
-
-/* users/ranking */
-.users-index-item {
-    padding: 20px 30px;
-    background-color: white;
-    overflow: hidden;
-    box-shadow: 0 2px 6px #c1ced7;
-    object-fit: cover;
-}
-.user-left {
-    float: left;
-    width: 10%;
-}
-
-.user-left img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    box-shadow: 0 2px 6px #c1ced7;
-    object-fit: cover;
-}
-
-.user-right {
-    width: 90%;
-    height: 50px;
-    padding-left: 25px;
-    text-align: left;
-    display: table-cell;
-    vertical-align: middle;
-}
-
-.points {
-    color: black;
 }

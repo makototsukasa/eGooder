@@ -1,9 +1,13 @@
-$(document).on('mouseenter', '.user-object', function() {
-    var $item = $(this).find('.user-object-item');
-    var $items = $('.user-object-item');
-    var $icon = $(this).find('.user-object-icon');
-    var $icons = $('.user-object-icon');
-    var $objects = $('.user-object');
+$(function() {
+    $('.flash').delay(1500).slideUp();
+});
+
+$(document).on('mouseenter', '.user-item', function() {
+    var $item = $(this).find('.user-item-message');
+    var $items = $('.user-item-message');
+    var $icon = $(this).find('.user-item-icon');
+    var $icons = $('.user-item-icon');
+    var $objects = $('.user-item');
 
     $objects.removeClass('open');
     $items.slideUp({queue: false});
@@ -23,10 +27,10 @@ $(document).on('mouseenter', '.user-object', function() {
     $item.slideDown({queue: false});
 });
 
-$(document).on('mouseleave', '.user-object', function() {
-    var $items = $('.user-object-item');
-    var $objects = $('.user-object');
-    var $icons = $('.user-object-icon');
+$(document).on('mouseleave', '.user-item', function() {
+    var $items = $('.user-item-message');
+    var $objects = $('.user-item');
+    var $icons = $('.user-item-icon');
 
     $objects.removeClass('open');
     $items.slideUp({queue: false});

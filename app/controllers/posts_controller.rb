@@ -2,10 +2,6 @@ class PostsController < ApplicationController
   before_action :check_not_login
   before_action :check_post_user, {only: [:edit, :update, :destroy]}
 
-  def index
-    @posts = Post.all.order(created_at: "DESC")
-  end
-
   def show
     @post = Post.find_by(id: params[:id])
     @user = User.find_by(id: @post.user_id)
@@ -46,7 +42,7 @@ class PostsController < ApplicationController
     @post.content = params[:content]
     if @post.save
       flash[:notice] = "投稿を編集しました"
-      redirect_to("/posts/index")
+      redirect_to("/users/index")
     else
       render("/posts/edit")
     end
@@ -59,7 +55,7 @@ class PostsController < ApplicationController
     else
       flash[:notice] = "投稿を削除できませんでした"
     end
-    redirect_to("/posts/index")
+    redirect_to("/users/index")
   end
 
   # before_action
@@ -67,7 +63,7 @@ class PostsController < ApplicationController
     @post = Post.find_by(id: params[:id])
     if @current_user.id != @post.user_id
       flash[:notice] = "権限がありません"
-      redirect_to("/posts/index")
+      redirect_to("/users/index")
     end
   end
 end

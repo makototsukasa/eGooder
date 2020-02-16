@@ -1,28 +1,32 @@
-<div class="main posts-new">
-    <div class="container">
-            <div class="back-btn">
-                <%= link_to("戻る", "/users/#{@user.id}") %>
-            </div>
-        <h1 class="form-heading">投稿する</h1>
-        <div class="form">
-            <div class="form-body">
-                <%= form_tag("/posts/#{@post.send_id}/create") do %>
-                    <% @post.errors.full_messages.each do |message| %>
-                        <div class="form-error">
-                            <%= message %>
-                        </div>
-                    <% end %>
-                    <div class="form-start-msg">
-                        <img class="icon post-icon" src=<%= "/user_images/#{@user.image_name}" %>>
-                        <p><%= @user.name %>さんの</p>
-                    </div>
-                    <textarea name="content"><%= @post.content %></textarea>
-                    <div class="form-end-msg">
-                        <p>ところがいいね！</p>
-                    </div>
-                    <input type="submit" value="投稿">
-                <% end %>
-            </div>
+<div class="main bg-lightorange">
+    <div class="main-header">
+        <div class="btn bg-orange">
+            <%= link_to("戻る", "/users/#{@user.id}", class: "font-white") %>
         </div>
+    </div>
+    <h1 class="heading font-orange">投稿する</h1>
+    <div class="main-content bg-white shadow-gray">
+        <% @post.errors.full_messages.each do |message| %>
+            <div class="form-error">
+                <%= message %>
+            </div>
+        <% end %>
+        <%= form_tag("/posts/#{@post.send_id}/create") do %>
+            <div class="form-item">       
+                <div class="form-start-msg">
+                    <div class="form-start-msg-icon">
+                        <img class="bg-white" src=<%= "/user_images/#{@user.image_name}" %>>
+                    </div>
+                    <p><%= @user.name %>さんの</p>
+                </div>
+                <textarea name="content"><%= @post.content %></textarea>
+                <div class="form-end-msg">
+                    <p>ところがいいね！</p>
+                </div>
+            </div>
+            <div class="form-submit">
+                <input class="bg-orange font-white" type="submit" value="投稿">
+            </div>
+        <% end %>
     </div>
 </div>

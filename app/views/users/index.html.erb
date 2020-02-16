@@ -1,8 +1,8 @@
-<div class="main">
-<h1 class="users-heading heading">メンバー</h1>
-    <div class="users-index">
+<div class="main bg-lightorange">
+    <h1 class="heading font-orange">メンバー</h1>
+    <div class="users-container">
         <% @users.each do |user| %>
-            <%= render partial: "userObject", locals: { user: user, posts: @posts.where(send_id: user.id) } %>
+            <%= render partial: "parts/userItem", locals: { user: user, posts: @posts.where(send_id: user.id) } %>
         <% end %>
     </div>
 </div>

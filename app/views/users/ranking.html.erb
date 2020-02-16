@@ -1,0 +1,41 @@
+<div class="main bg-lightorange">
+    <h1 class="heading font-orange">ランキング</h1>
+    <div class="main-content bg-white">
+        <div class="tab">
+            <% if @type=="send" %><div class="tab-item active"><% else %><div class="tab-item"><% end %>
+                <%= link_to("いいね！投稿数", "/users/ranking/send/#{@period}") %>
+            </div>
+            <% if @type=="receive" %><div class="tab-item active"><% else %><div class="tab-item"><% end %>
+                <%= link_to("いいね！獲得数", "/users/ranking/receive/#{@period}") %>
+            </div>
+        </div>
+        <div class="tab font-small">
+            <% if @period=="month" %><div class="tab-item active"><% else %><div class="tab-item"><% end %>
+                <%= link_to("月間", "/users/ranking/#{@type}/month") %>
+            </div>
+            <% if @period=="year" %><div class="tab-item active"><% else %><div class="tab-item"><% end %>
+                <%= link_to("年間", "/users/ranking/#{@type}/year") %>
+            </div>
+            <% if @period=="total" %><div class="tab-item active"><% else %><div class="tab-item"><% end %>
+                <%= link_to("トータル", "/users/ranking/#{@type}/total") %>
+            </div>
+        </div>
+        <% @users.each do |user| %>
+            <div class="iconbox">
+                <div class="iconbox-left">
+                    <img src=<%= "/user_images/#{user.image_name}" %> onerror="this.src='/user_images/default_icon.jpg'"/>
+                </div>
+                <div class="iconbox-right">
+                    <div class="iconbox-right-top">
+                        <%= link_to(user.name, "/users/#{user.id}") %>
+                    </div>
+                    <div class="iconbox-right-middle font-large font-gray">
+                        <%= @posts.where(user_id: user.id).count %>いいね！
+                    </div>
+                    <div class="iconbox-right-bottom">
+                    </div>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+<div class="user-item">
+    <%= link_to "/users/#{user.id}" do %>
+    <img class="icon user-item-icon" src=<%= "/user_images/#{user.image_name}" %> onerror="this.src='/user_images/default_icon.jpg'"/>
+    <div class="user-item-name">
+        <%= user.name %>
+    </div>
+    <% end %>
+    <ul>
+        <% posts.each_with_index do |post, i| %>
+            <%= render partial: "parts/userItemMessage", locals: { post: post, index: i } %>
+        <% end %>
+    </ul>
+</div>

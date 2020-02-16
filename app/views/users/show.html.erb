@@ -1,30 +1,30 @@
-<div class="main user-show">
-    <div class="container">
-        <div class"back-container">
-            <div class="back-btn">
-                <%= link_to("戻る", "/users/index") %>
+<div class="main bg-lightorange">
+        <div class="main-header">
+            <div class="btn bg-orange">
+                <%= link_to("戻る", "/users/index", class: "font-white") %>
             </div>
         </div>
-        <div class="user">
-            <img src=<%= "/user_images/#{@user.image_name}" %> onerror="this.src='/user_images/default_icon.jpg'"/>
+        <div class="main-top">
+            <img class="bg-white shadow-gray" src=<%= "/user_images/#{@user.image_name}" %> onerror="this.src='/user_images/default_icon.jpg'"/>
             <h2><%= @user.name %></h2>
             <p><%= @user.email %></p>
             <% if @current_user.id == @user.id %>
                 <%= link_to("編集", "/users/#{@user.id}/edit") %>
             <% else %>
                 <%= link_to("/posts/#{@user.id}/new") do %>
-                    <input class="btn" type="submit" value="いいね！メッセージを送る">
+                    <input class="btn bg-orange font-white" type="submit" value="いいね！メッセージを送る">
                 <% end %>
             <% end %>
         </div>
-        <ul class="user-tabs">
-            <li class="active"><%= link_to("みんなからのいいね！メッセージ", "/users/#{@user.id}") %></li>
-            <li><%= link_to("いいね!グラフ（未実装）", "/users/#{@user.id}") %></li>
+        <div class="main-content bg-white">
+        <ul class="tab">
+            <li class="tab-item active"><%= link_to("みんなからのいいね！メッセージ", "/users/#{@user.id}") %></li>
+            <li class="tab-item"><%= link_to("いいね!グラフ（未実装）", "/users/#{@user.id}") %></li>
         </ul>
         <% @posts.each do |post| %>
-            <div class="posts-index-item">
+            <div class="message-box">
                 <%= post.content %>
             </div>
         <% end %>
-    </div>
+        </div>
 </div>
